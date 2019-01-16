@@ -2,7 +2,7 @@ package com.marom.mmpetclinic.model;
 
 import java.time.LocalTime;
 
-public class Pet {
+public class Pet extends BaseEntity {
 
     private PetType petType;
     private Owner owner;
