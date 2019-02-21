@@ -2,9 +2,11 @@ package com.marom.mmpetclinic.services.map;
 
 import com.marom.mmpetclinic.model.Pet;
 import com.marom.mmpetclinic.services.PetService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
 
     @Override

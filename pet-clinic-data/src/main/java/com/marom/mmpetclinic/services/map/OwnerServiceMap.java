@@ -2,9 +2,11 @@ package com.marom.mmpetclinic.services.map;
 
 import com.marom.mmpetclinic.model.Owner;
 import com.marom.mmpetclinic.services.OwnerService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
 
 
