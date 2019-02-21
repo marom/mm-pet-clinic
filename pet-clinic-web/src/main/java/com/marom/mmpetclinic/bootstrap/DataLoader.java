@@ -5,8 +5,9 @@ import com.marom.mmpetclinic.model.Vet;
 import com.marom.mmpetclinic.services.OwnerService;
 import com.marom.mmpetclinic.services.VetService;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
