@@ -1,13 +1,22 @@
 package com.marom.mmpetclinic.model;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Pet extends BaseEntity {
 
+    private String name;
     private PetType petType;
     private Owner owner;
-    private LocalTime birthDate;
+    private LocalDate birthDate;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public PetType getPetType() {
         return petType;
@@ -25,11 +34,11 @@ public class Pet extends BaseEntity {
         this.owner = owner;
     }
 
-    public LocalTime getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalTime birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 }
