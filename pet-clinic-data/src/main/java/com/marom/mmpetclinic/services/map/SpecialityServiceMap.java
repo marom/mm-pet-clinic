@@ -2,10 +2,12 @@ package com.marom.mmpetclinic.services.map;
 
 import com.marom.mmpetclinic.model.Speciality;
 import com.marom.mmpetclinic.services.SpecialitiesService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
-public class SpecialityMapService extends AbstractMapService<Speciality, Long> implements SpecialitiesService {
+@Service
+public class SpecialityServiceMap extends AbstractMapService<Speciality, Long> implements SpecialitiesService {
 
     @Override
     public Set<Speciality> findAll() {
