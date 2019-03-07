@@ -5,6 +5,7 @@ import com.marom.mmpetclinic.model.Visit;
 import com.marom.mmpetclinic.services.PetService;
 import com.marom.mmpetclinic.services.VisitService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -48,9 +49,9 @@ public class VisitController {
      * @return Pet
      */
     @ModelAttribute("visit")
-    public Visit loadPetWithVisit(@PathVariable("petId") Long petId, Map<String, Object> model) {
+    public Visit loadPetWithVisit(@PathVariable("petId") Long petId, Model model) {
         Pet pet = petService.findById(petId);
-        model.put("pet", pet);
+        model.addAttribute("pet", pet);
         Visit visit = new Visit();
         pet.getVisits().add(visit);
         visit.setPet(pet);
