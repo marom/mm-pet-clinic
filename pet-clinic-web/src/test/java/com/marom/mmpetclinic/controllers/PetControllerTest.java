@@ -80,13 +80,12 @@ class PetControllerTest {
         verify(petService).save(any());
     }
 
-    //@Test
+    @Test
     void initUpdateForm() throws Exception {
 
-        when(petService.findById(anyLong())).thenReturn(pet);
-        when(petController.findOwner(anyLong())).thenReturn(owner);
+        when(petService.findById(anyLong())).thenReturn(Pet.builder().id(1L).build());
 
-        mockMvc.perform(get("/owners/1/pets/2/edit"))
+        mockMvc.perform(get("/owners/1/pets/1/edit"))
                 .andExpect(status().isOk())
                 .andExpect(model().attributeExists("owner"))
                 .andExpect(model().attributeExists("pet"))
