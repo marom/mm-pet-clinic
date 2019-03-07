@@ -74,9 +74,8 @@ public class PetController {
     }
 
     @GetMapping("/pets/{petId}/edit")
-    public String initUpdateForm(@PathVariable("petId") Long petId, Model model) {
-        Pet pet = petService.findById(petId);
-        model.addAttribute("pet", pet);
+    public String initUpdateForm(@PathVariable Long petId, Model model) {
+        model.addAttribute("pet", petService.findById(petId));
         return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
     }
 

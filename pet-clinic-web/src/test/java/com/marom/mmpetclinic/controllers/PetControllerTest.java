@@ -20,7 +20,6 @@ import java.util.Set;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -45,13 +44,11 @@ class PetControllerTest {
     MockMvc mockMvc;
 
     Owner owner;
-    Pet pet;
     Set<PetType> petTypes;
 
     @BeforeEach
     void setUp() {
         owner = Owner.builder().id(1l).build();
-        pet = Pet.builder().id(1L).build();
         petTypes = new HashSet<>();
         petTypes.add(PetType.builder().id(1L).name("Dog").build());
         petTypes.add(PetType.builder().id(2L).name("Cat").build());
@@ -59,11 +56,12 @@ class PetControllerTest {
         mockMvc = MockMvcBuilders
                 .standaloneSetup(petController)
                 .build();
+
+        when(petController.findOwner(anyLong())).thenReturn(owner);
     }
 
     @Test
     void initCreationForm() throws Exception {
-        when(petController.findOwner(anyLong())).thenReturn(owner);
 
         mockMvc.perform(get("/owners/1/pets/new"))
                 .andExpect(status().isOk())
@@ -75,14 +73,11 @@ class PetControllerTest {
     @Test
     void processCreationForm() throws Exception {
 
-        when(petController.findOwner(anyLong())).thenReturn(owner);
-
         mockMvc.perform(post("/owners/1/pets/new"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/owners/1"));
 
-        //todo save not called during test
-        //verify(petService).save(any());
+        verify(petService).save(any());
     }
 
     //@Test
