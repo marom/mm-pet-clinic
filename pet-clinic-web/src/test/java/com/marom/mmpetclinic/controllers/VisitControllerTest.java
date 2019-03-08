@@ -37,10 +37,6 @@ class VisitControllerTest {
     MockMvc mockMvc;
     Visit visit;
 
-    //@Mock
-    //Model model;
-
-
     @BeforeEach
     void setUp() {
 
